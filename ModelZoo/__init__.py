@@ -12,8 +12,8 @@ NN_LIST = [
     'SAN',
     'SRCNNpara_1218_rx_1sir_5_real_channelnet',
     'SRCNNpara_1218_rx_1sir_5_complex_channelnet',
-    'SRCNNpara_1218_rx_1sir_-10_real_channelnet',
-    'SRCNNpara_1218_rx_1sir_-10_complex_channelnet'
+    'SRCNNpara_1218_rx_1sir_n10_real_channelnet',
+    'SRCNNpara_1218_rx_1sir_n10_complex_channelnet'
 ]
 
 
@@ -39,11 +39,11 @@ MODEL_LIST = {
     'SRCNNpara_1218_rx_1sir_5_complex_channelnet': {
         'Base': 'SRCNNpara_1218_rx_1sir_5_complex_channelnet.pth',
     },
-    'SRCNNpara_1218_rx_1sir_-10_real_channelnet': {
-        'Base': 'SRCNNpara_1218_rx_1sir_-10_real_channelnet.pth',
+    'SRCNNpara_1218_rx_1sir_n10_real_channelnet': {
+        'Base': 'SRCNNpara_1218_rx_1sir_n10_real_channelnet.pth',
     },
-    'SRCNNpara_1218_rx_1sir_-10_complex_channelnet': {
-        'Base': 'SRCNNpara_1218_rx_1sir_-10_complex_channelnet.pth',
+    'SRCNNpara_1218_rx_1sir_n10_complex_channelnet': {
+        'Base': 'SRCNNpara_1218_rx_1sir_n10_complex_channelnet.pth',
     }
 }
 
@@ -95,11 +95,11 @@ def get_model(model_name, factor=4, num_channels=3):
             from .NN.SRCNN_complex import SRCNN_ComplexNet
             net = SRCNN_ComplexNet()
             
-        elif model_name == 'SRCNNpara_1218_rx_1sir_-10_real_channelnet':
+        elif model_name == 'SRCNNpara_1218_rx_1sir_n10_real_channelnet':
             from .NN.SRCNN_real import SRCNN_Net
             net = SRCNN_Net()
 
-        elif model_name == 'SRCNNpara_1218_rx_1sir_-10_complex_channelnet':
+        elif model_name == 'SRCNNpara_1218_rx_1sir_n10_complex_channelnet':
             from .NN.SRCNN_complex import SRCNN_ComplexNet
             net = SRCNN_ComplexNet()
 
