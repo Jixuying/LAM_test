@@ -11,7 +11,9 @@ NN_LIST = [
     'RNAN', 
     'SAN',
     'SRCNNpara_1218_rx_1sir_5_real_channelnet',
-    'SRCNNpara_1218_rx_1sir_5_complex_channelnet'
+    'SRCNNpara_1218_rx_1sir_5_complex_channelnet',
+    'SRCNNpara_1218_rx_1sir_-10_real_channelnet',
+    'SRCNNpara_1218_rx_1sir_-10_complex_channelnet'
 ]
 
 
@@ -37,6 +39,12 @@ MODEL_LIST = {
     'SRCNNpara_1218_rx_1sir_5_complex_channelnet': {
         'Base': 'SRCNNpara_1218_rx_1sir_5_complex_channelnet.pth',
     },
+    'SRCNNpara_1218_rx_1sir_-10_real_channelnet': {
+        'Base': 'SRCNNpara_1218_rx_1sir_-10_real_channelnet.pth',
+    },
+    'SRCNNpara_1218_rx_1sir_-10_complex_channelnet': {
+        'Base': 'SRCNNpara_1218_rx_1sir_-10_complex_channelnet.pth',
+    }
 }
 
 def print_network(model, model_name):
