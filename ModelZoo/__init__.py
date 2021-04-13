@@ -94,6 +94,14 @@ def get_model(model_name, factor=4, num_channels=3):
         elif model_name == 'SRCNNpara_1218_rx_1sir_5_complex_channelnet':
             from .NN.SRCNN_complex import SRCNN_ComplexNet
             net = SRCNN_ComplexNet()
+            
+        elif model_name == 'SRCNNpara_1218_rx_1sir_-10_real_channelnet':
+            from .NN.SRCNN_real import SRCNN_Net
+            net = SRCNN_Net()
+
+        elif model_name == 'SRCNNpara_1218_rx_1sir_-10_complex_channelnet':
+            from .NN.SRCNN_complex import SRCNN_ComplexNet
+            net = SRCNN_ComplexNet()
 
         else:
             raise NotImplementedError()
