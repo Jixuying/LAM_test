@@ -84,15 +84,20 @@ def Path_gradient(numpy_image, model, attr_objective, path_interpolation_func, c
     """
     if cuda:
         model = model.cuda()
+    print(1)
     cv_numpy_image = np.moveaxis(numpy_image, 0, 2)
+    print(2)
     image_interpolation, lambda_derivative_interpolation = path_interpolation_func(cv_numpy_image)
+    print(3)
     grad_accumulate_list = np.zeros_like(image_interpolation)
+    print(4)
     result_list = []
     for i in range(image_interpolation.shape[0]):
         img_tensor = torch.from_numpy(image_interpolation[i])
         img_tensor.requires_grad_(True)
         if cuda:
             result = model(_add_batch_one(img_tensor).cuda())
+            print(5)
             target = attr_objective(result)
             target.backward()
             grad = img_tensor.grad.cpu().numpy()
