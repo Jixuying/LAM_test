@@ -111,6 +111,14 @@ def get_model(model_name, factor=4, num_channels=3):
             from .NN.SRCNN_complex import SRCNN_ComplexNet
             net = SRCNN_ComplexNet()
             
+        elif model_name == 'DNCNNpara_1218_rx_1sir_5_real_channelnet':
+            from .NN.DNCNN_real import DNCNN_Net
+            net = DNCNN_Net()
+
+        elif model_name == 'DNCNNpara_1218_rx_1sir_5_complex_channelnet':
+            from .NN.DNCNN_complex import DNCNN_ComplexNet
+            net = DNCNN_ComplexNet()
+            
         elif model_name == 'DNCNNpara_1218_rx_1sir_n10_real_channelnet':
             from .NN.DNCNN_real import DNCNN_Net
             net = DNCNN_Net()
