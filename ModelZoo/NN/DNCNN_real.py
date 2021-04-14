@@ -12,7 +12,7 @@ from complexFunctions import complex_relu, complex_max_pool2d
 from scipy.io import loadmat,savemat
 # from tensorboardX import SummaryWriter
 import os.path
-
+DNCNN_HIDDENS = 18
 class DNCNN_Net(nn.Module):
 
     def __init__(self, BN=True, Dropout=False):
