@@ -23,9 +23,9 @@ class DNCNN_Net(nn.Module):
         self.hidden = []
         self.bns = []
         self.drops = []
-        self.conv1 = Conv2d(1, 64, 3, 1, 1)
+        self.conv1 = Conv2d(2, 64, 3, 1, 1)
         self.conv2 = Conv2d(64, 64, 3, 1, 1)
-        self.conv3 = Conv2d(64, 1, 3, 1, 1)
+        self.conv3 = Conv2d(64, 2, 3, 1, 1)
         for i in range(DNCNN_HIDDENS):
             conv = Conv2d(64, 64, 3, 1, 1)
             setattr(self, 'conv2_hideen%i' % i, conv)
