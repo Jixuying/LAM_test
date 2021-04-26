@@ -15,7 +15,9 @@ NN_LIST = [
     'SRCNNpara_1218_rx_1sir_n10_real_channelnet',
     'SRCNNpara_1218_rx_1sir_n10_complex_channelnet',
     'DNCNNpara_1218_rx_1sir_5_real_channelnet',
-    'DNCNNpara_1218_rx_1sir_5_complex_channelnet'
+    'DNCNNpara_1218_rx_1sir_5_complex_channelnet',
+    'NewNetpara_1218_rx_1sir_5_real_channelnet',
+    'NewNetpara_1218_rx_1sir_5_complex_channelnet'
 ]
 
 
@@ -52,6 +54,12 @@ MODEL_LIST = {
     },
     'DNCNNpara_1218_rx_1sir_5_complex_channelnet': {
         'Base': 'DNCNNpara_1218_rx_1sir_5_complex_channelnet.pth',
+    },
+    'NewNetpara_1218_rx_1sir_5_real_channelnet': {
+        'Base': 'NewNetpara_1218_rx_1sir_5_real_channelnet.pth',
+    },
+    'NewNetpara_1218_rx_1sir_5_complex_channelnet': {
+        'Base': 'NewNetpara_1218_rx_1sir_5_complex_channelnet.pth',
     }
 }
 
@@ -126,6 +134,14 @@ def get_model(model_name, factor=4, num_channels=3):
         elif model_name == 'DNCNNpara_1218_rx_1sir_n10_complex_channelnet':
             from .NN.DNCNN_complex import DNCNN_ComplexNet
             net = DNCNN_ComplexNet()
+            
+        elif model_name == 'NewNetpara_1218_rx_1sir_5_real_channelnet':
+            from .NN.NewNet_real import NewNet_Net
+            net = NewNet_Net()
+
+        elif model_name == 'DNCNNpara_1218_rx_1sir_5_complex_channelnet':
+            from .NN.NewNet_complex import NewNet_ComplexNet
+            net = NewNet_ComplexNet()
 
         else:
             raise NotImplementedError()
