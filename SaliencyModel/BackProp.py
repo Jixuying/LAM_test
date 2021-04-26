@@ -47,8 +47,8 @@ def GaussianBlurPath(sigma, fold, l=5):
         for i in range(fold + 1):
             kernel_interpolation[i] = isotropic_gaussian_kernel(l, sigma_interpolation[i])
         for i in range(fold):
-            image_interpolation[i][:,:,0] = cv2.filter2D(cv_numpy_image, -1, kernel_interpolation[i + 1])
-            lambda_derivative_interpolation[i][:,:,0] = cv2.filter2D(cv_numpy_image, -1, (kernel_interpolation[i + 1] - kernel_interpolation[i]) * fold)
+            image_interpolation[i] = cv2.filter2D(cv_numpy_image, -1, kernel_interpolation[i + 1])#[i][:,:,0]
+            lambda_derivative_interpolation[i] = cv2.filter2D(cv_numpy_image, -1, (kernel_interpolation[i + 1] - kernel_interpolation[i]) * fold)
         return np.moveaxis(image_interpolation, 3, 1).astype(np.float32), \
                np.moveaxis(lambda_derivative_interpolation, 3, 1).astype(np.float32)
     return path_interpolation_func
