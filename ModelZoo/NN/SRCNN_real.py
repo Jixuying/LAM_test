@@ -18,9 +18,9 @@ class SRCNN_Net(nn.Module):
     def __init__(self):
         # 这里 ComplexNet继承父类nn.Module中的init
         super(SRCNN_Net, self).__init__()  # https://www.runoob.com/python/python-func-super.html
-        self.conv1 = Conv2d(1, 64, 9, 1, 4)
+        self.conv1 = Conv2d(2, 64, 9, 1, 4)
         self.conv2 = Conv2d(64, 32, 1, 1, 0)
-        self.conv3 = Conv2d(32, 1, 5, 1, 2)
+        self.conv3 = Conv2d(32, 2, 5, 1, 2)
 
     def forward(self, x):  # forward函数定义了网络的前向传播的顺序
         # outputs = []
