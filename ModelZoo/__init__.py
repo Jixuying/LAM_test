@@ -137,11 +137,13 @@ def get_model(model_name, factor=4, num_channels=3):
             
         elif model_name == 'NewNetpara_1218_rx_1sir_5_real_channelnet':
             from .NN.NewNet_real import NewNet_Net
-            net = NewNet_Net()
+            net = NewNet_Net(growthRate=12, depth=11, reduction=0.5,
+                                               bottleneck=False, nClasses=10)
 
         elif model_name == 'DNCNNpara_1218_rx_1sir_5_complex_channelnet':
             from .NN.NewNet_complex import NewNet_ComplexNet
-            net = NewNet_ComplexNet()
+            net = NewNet_ComplexNet(growthRate=6, depth=11, reduction=0.5,
+                               bottleneck=False, nClasses=10)
 
         else:
             raise NotImplementedError()
