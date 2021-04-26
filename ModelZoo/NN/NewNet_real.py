@@ -55,9 +55,9 @@ class Transition(nn.Module):
         # out = F.avg_pool2d(out, 2)
         return out
 
-class SRCNN_DenseNet(nn.Module):
+class NewNet_Net(nn.Module):
     def __init__(self, growthRate, depth, reduction, nClasses, bottleneck):
-        super(SRCNN_DenseNet, self).__init__()
+        super(NewNet_Net, self).__init__()
 
         nDenseBlocks = (depth - 2) // 3  # 每个denseblock有32层 cnn，一共3个denseblock ##需要改一下代码？——不用 正好
         if bottleneck:
