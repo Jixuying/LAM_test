@@ -35,7 +35,7 @@ def attr_id(tensor, h, w, window=8, reduce='sum'):
     return reduce_func(reduce)(crop)
 
 
-def attr_grad(tensor, h, w, window=8, reduce='sum'):
+def attr_grad(tensor, h, w, window_h=8, window_w=8, reduce='sum'):
     """
     :param tensor: B, C, H, W tensor
     :param h: h position
@@ -49,7 +49,7 @@ def attr_grad(tensor, h, w, window=8, reduce='sum'):
     h_grad = torch.pow(tensor[:, :, :h_x - 1, :] - tensor[:, :, 1:, :], 2)
     w_grad = torch.pow(tensor[:, :, :, :w_x - 1] - tensor[:, :, :, 1:], 2)
     grad = torch.pow(h_grad[:, :, :, :-1] + w_grad[:, :, :-1, :], 1 / 2)
-    crop = grad[:, :, h: h + window, w: w + window]
+    crop = grad[:, :, h: h + window_h, w: w + window_w]
     return reduce_func(reduce)(crop)
 
 
