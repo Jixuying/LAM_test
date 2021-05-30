@@ -5,9 +5,9 @@ from ModelZoo.utils import _add_batch_one, _remove_batch
 from SaliencyModel.utils import grad_norm, IG_baseline, interpolation, isotropic_gaussian_kernel
 
 
-def attribution_objective(attr_func, h, w, window_h=16, window_w=16):
+def attribution_objective(attr_func, h, w, window_h, window_w):
     def calculate_objective(image):
-        return attr_func(image, h, w, window_h=16, window_w=16)
+        return attr_func(image, h, w, window_h, window_w)
     return calculate_objective
 
 
