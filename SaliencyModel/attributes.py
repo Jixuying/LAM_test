@@ -66,7 +66,7 @@ def attr_Laplace(tensor, h, w, window_h=8, window_w=8, reduce='sum'):
     # h_grad = torch.pow(tensor[:, :, :h_x - 1, :] - tensor[:, :, 1:, :], 2)
     # w_grad = torch.pow(tensor[:, :, :, :w_x - 1] - tensor[:, :, :, 1:], 2)
     # grad = torch.pow(h_grad[:, :, :, :-1] + w_grad[:, :, :-1, :], 1 / 2)
-    h_grad = (tensor[:, :, 2:, :] + tensor[:, :h_x - 2, :, :]- tensor[:, :, 1:h_x - 1, :])
+    h_grad = (tensor[:, :, 2:, :] + tensor[:, :, :h_x - 2, :]- tensor[:, :, 1:h_x - 1, :])
     w_grad = (tensor[:, :, :, 2:] + tensor[:, :, :, :w_x - 2]- tensor[:, :, :, 1:w_x - 1])
     grad = (h_grad[:, :, :, :-1] + w_grad[:, :, :-1, :])
     crop = grad[:, :, h: h + window_h, w: w + window_w]
