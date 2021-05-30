@@ -70,6 +70,8 @@ def attr_Laplace(tensor, h, w, window_h=8, window_w=8, reduce='sum'):
     w_grad = (tensor[:, :, :, 2:] + tensor[:, :, :, :w_x - 2]- tensor[:, :, :, 1:w_x - 1])
     grad = (h_grad[:, :, :, 1:-1] + w_grad[:, :, 1:-1, :])
     crop = grad[:, :, h: h + window_h, w: w + window_w]
+    a = reduce_func(reduce)(crop)
+    print(a.shape)
     return reduce_func(reduce)(crop)
 
 # gabor_filter = cv2.getGaborKernel((21, 21), 10.0, -np.pi/4, 8.0, 1, 0, ktype=cv2.CV_32F)
