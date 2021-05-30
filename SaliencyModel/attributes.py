@@ -52,6 +52,25 @@ def attr_grad(tensor, h, w, window_h=8, window_w=8, reduce='sum'):
     crop = grad[:, :, h: h + window_h, w: w + window_w]
     return reduce_func(reduce)(crop)
 
+def attr_Laplace(tensor, h, w, window_h=8, window_w=8, reduce='sum'):
+    """
+    :param tensor: B, C, H, W tensor
+    :param h: h position
+    :param w: w position
+    :param window: size of window
+    :param reduce: reduce method, ['mean', 'sum', 'max', 'min']
+    :return:
+    """
+    h_x = tensor.size()[2]
+    w_x = tensor.size()[3]
+    # h_grad = torch.pow(tensor[:, :, :h_x - 1, :] - tensor[:, :, 1:, :], 2)
+    # w_grad = torch.pow(tensor[:, :, :, :w_x - 1] - tensor[:, :, :, 1:], 2)
+    # grad = torch.pow(h_grad[:, :, :, :-1] + w_grad[:, :, :-1, :], 1 / 2)
+    h_grad = (tensor[:, :, 2:, :] + tensor[:, :h_x - 2, :, :]- tensor[:, :, 1:h_x - 1, :])
+    w_grad = (tensor[:, :, :, 2:] + tensor[:, :, :, :w_x - 2]- tensor[:, :, :, 1:w_x - 1])
+    grad = (h_grad[:, :, :, :-1] + w_grad[:, :, :-1, :])
+    crop = grad[:, :, h: h + window_h, w: w + window_w]
+    return reduce_func(reduce)(crop)
 
 # gabor_filter = cv2.getGaborKernel((21, 21), 10.0, -np.pi/4, 8.0, 1, 0, ktype=cv2.CV_32F)
 
